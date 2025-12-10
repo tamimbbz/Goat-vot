@@ -4,7 +4,7 @@
 - **GitHub Repository:** [https://github.com/ntkhang03/Goat-Bot-V2](https://github.com/ntkhang03/Goat-Bot-V2)
 
 ## Project Updates
-This version includes fixes by Ew'r ShAn's to the FCA (Facebook Chat API) implementation.
+This version includes fixes by Ew'r Tamim's to the FCA (Facebook Chat API) implementation.
 
 ### Key Modifications
 - Updated files:
@@ -27,27 +27,10 @@ A custom Facebook API has been used to fix and improve the bot's functionality.
 
 ## Troubleshooting
 For any issues or support:
-- **Telegram:** [Telegram](https://telegram.me/sh4n_dev)
-- **Facebook:** [Facebook](https://www.facebook.com/Sh4n.Dev)
-- **Instagram:** [Instagram](https://www.instagram.com/sh4n.dev)
-
-- ## How to Setup
-- **YouTube:** [YouTube](https://www.youtube.com/@Sh4nDev)
-
-## Additional Resources
-- **C3C Files Download:** [Download Here](https://drive.google.com/file/d/1-MWoTyqES-V4H-QAIQDiC34-XMKju8hA/view?usp=drivesdk)
-
+- **Telegram:** [Telegram](@Tamim420bbz)
+- **Facebook:** [Facebook](https://www.facebook.com/tamim.bbz.2025)
+- **Instagram:** [Instagram](https://www.instagram.com/___your___bbz___?igsh=MTNyaTVtczhxMGk0)
 ### Notes
 - Ensure you extract cookies from the C3C files
 - Place extracted cookies in `account.txt`
 - Follow the bot setup instructions carefully
-
-### Error Solve
-- If you facing cookies missing or `account.dev.txt` file missing error, than put your cookies in `account.txt` and make blank file `account.dev.txt`
-- If you facing problem with npm than update you `package.json` and `package-lock.json` from this repo and use node version 20 with npm version 10
-
-## Disclaimer
-This is a modified version of the original Ewr-ShAn-Bot. Use at your own discretion.
-
-## Support
-For any technical support or inquiries, please contact the maintainer through the provided social media links.
