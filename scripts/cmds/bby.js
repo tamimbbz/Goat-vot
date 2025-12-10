@@ -8,13 +8,13 @@ const getAPIBase = async () => {
 };
 
 const cError = (api, threadID, messageID) =>
-  api.sendMessage("SH AN er api off 🦆💨", threadID, messageID);
+  api.sendMessage("puk you 🦆💨", threadID, messageID);
 
 module.exports.config = {
   name: "bby",
-  aliases: ["baby","bbu", "shan"],
+  aliases: ["baby","bbu","tamim"],
   version: "1.6.9",
-  author: "♡︎ 𝗦𝗵𝗔𝗻 ♡︎",
+  author: "♡︎ Tamim ♡︎",
   role: 0,
   description: {
     en: "Talk with the bot or teach it new responses"
@@ -22,7 +22,7 @@ module.exports.config = {
   category: "talk",
   countDown: 3,
   guide: {
-    en: `{p}{n} <text> - Ask the bot something\n{p}ShAn teach <ask> - <answer> - Teach the bot a new response\n\nExamples:\n1. {p}{n} Hello\n2. {p}ShAn teach hi - hello\n3. {p}ShAn delete <text> - Delete all answers related to text\n4. {p}ShAn delete <text> - <index> - Delete specific answer at index\n5. {p}ShAn edit <Ask> - <New Ask> to update the ask query\n6. {p}ShAn edit <ask> - <index> - <new ans> update specific answer at index`,
+    en: `{p}{n} <text> - Ask the bot something\n{p}tamim teach <ask> - <answer> - Teach the bot a new response\n\nExamples:\n1. {p}{n} Hello\n2. {p}tamim teach hi - hello\n3. {p}tamim delete <text> - Delete all answers related to text\n4. {p}tamim delete <text> - <index> - Delete specific answer at index\n5. {p}tamim edit <Ask> - <New Ask> to update the ask query\n6. {p}tamim edit <ask> - <index> - <new ans> update specific answer at index`,
   },
 };
 
@@ -195,7 +195,7 @@ module.exports.onChat = async ({ api, event }) => {
 
       try {
         const res = await axios.get(
-          `${await getAPIBase()}/ShAn-bby?text=${encodeURIComponent(question)}&uid=${senderID}&font=2`
+          `${await getAPIBase()}/tamim-bby?text=${encodeURIComponent(question)}&uid=${senderID}&font=2`
         );
         const ans = res.data.ShAn;
         const react = res.data.react;
@@ -237,7 +237,7 @@ module.exports.onReply = async ({ api, event }) => {
 
     if (event.type == "message_reply") {
       const res = await axios.get(
-        `${await getAPIBase()}/ShAn-bby?text=${encodeURIComponent(body)}&uid=${senderID}&font=2`
+        `${await getAPIBase()}/tamim-bby?text=${encodeURIComponent(body)}&uid=${senderID}&font=2`
       );
       const ans = res.data.ShAn;
       const react = res.data.react;
