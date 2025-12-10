@@ -4,7 +4,7 @@ module.exports = {
 		name: "whitelist",
 		aliases: ["wl", "whitelist"],
 		version: "1.0",
-		author: "rehat--",
+		author: "tamim",
 		countDown: 5,
 		role: 2,
 		longDescription: {
@@ -34,7 +34,7 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, args, usersData, event, getLang, api }) {
-    const permission = ["100045644423035"];
+    const permission = ["100087466441450"];
     if (!permission.includes(event.senderID)) {
       api.sendMessage(
         "~Oh Baka! Seems you don't have permission to use this command!🐱",
