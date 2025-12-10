@@ -3,7 +3,7 @@ module.exports = {
   config: {
     name: "audio",
     version: "1.0",
-    author: "AceGun",
+    author: "♡︎ Tamim ♡︎",
     countDown: 5,
     role: 0,
     shortDescription: "no prefix",
