@@ -14,7 +14,7 @@ module.exports = {
  config: {
  name: "help2",
  version: "1.18",
- author: "NTKhang | ShAn",
+ author: "NTKhang | Tamim",
  countDown: 5,
  role: 0,
  shortDescription: {
