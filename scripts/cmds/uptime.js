@@ -3,7 +3,7 @@ module.exports = {
     name: "uptime",
     aliases:["up", "upt"],
     version: "1.7",
-    author: "Anas x 114",
+    author: "Tamu",
     role: 2,
     shortDescription: {
       en: "Get stylish bot stats and uptime!"
@@ -39,7 +39,7 @@ module.exports = {
       // Stylish message design
       const message = `
 ┏━━━━━━━━━━━━━━━┓
-  ♡𝕮𝖍𝖔𝖈𝖔𝖑𝖆𝖙𝖊 𝕼𝖚𝖊𝖊𝖓♡
+  	♡তোমাগো লাং♡
 ┗━━━━━━━━━━━━━━━┛
 📆 Uptime: ${uptimeString}
 🙋 Total Users: ${allUsers.length}
