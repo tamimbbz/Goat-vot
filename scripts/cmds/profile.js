@@ -1,33 +1,72 @@
+const axios = require("axios");
+const fs = require("fs-extra");
+const request = require("request");
+
 module.exports = {
   config: {
-    name: "profile",
-    aliases: ["pfp", "pp"],
-    version: "1.1",
-    author: "dipto",
-    countDown: 5,
+    name: "pp",
+    version: "1.0.0",
+    author: "Tamu",
+    countDown: 3,
     role: 0,
-    description: "PROFILE image",
-    category: "image",
-    guide: { en: "{pn} @tag or userID or reply to a message or provide a Facebook URL" }
+    shortDescription: "Facebook প্রোফাইল পিকচার দেখাবে 📸",
+    longDescription: "যেকোনো ইউজারের ফেসবুক প্রোফাইল পিকচার দেখা যাবে (নিজে, রিপ্লাই বা লিংক থেকে)।",
+    category: "utility",
+    guide: {
+      en: "{pn} [reply/@mention/link]"
+    }
   },
-  onStart: async function ({ event, message, usersData, args }) {
-    const getAvatarUrl = async (uid) => await usersData.getAvatarUrl(uid);
-    const uid = Object.keys(event.mentions)[0] || args[0] || event.senderID;
-    let avt;
+
+  onStart: async function ({ api, event, args, usersData }) {
+    const cachePath = __dirname + "/cache/profile.png";
 
     try {
+      let uid;
+
+      // ১️⃣ রিপ্লাই করা মেসেজের ইউজারের প্রোফাইল
       if (event.type === "message_reply") {
-        avt = await getAvatarUrl(event.messageReply.senderID);
-      } else if (args.join(" ").includes("facebook.com")) {
-        const match = args.join(" ").match(/(\d+)/);
-        if (match) avt = await getAvatarUrl(match[0]);
-        else throw new Error("Invalid Facebook URL.");
-      } else {
-        avt = await getAvatarUrl(uid);
+        uid = event.messageReply.senderID;
       }
-      message.reply({ body: "", attachment: await global.utils.getStreamFromURL(avt) });
-    } catch (error) {
-      message.reply(`⚠️ Error: ${error.message}`);
+
+      // ২️⃣ @mention করা ইউজারের প্রোফাইল
+      else if (Object.keys(event.mentions || {}).length > 0) {
+        uid = Object.keys(event.mentions)[0];
+      }
+
+      // ৩️⃣ লিংক দেওয়া থাকলে
+      else if (args[0] && args[0].includes(".com/")) {
+        const resID = await api.getUID(args[0]);
+        uid = resID;
+      }
+
+      // ৪️⃣ কিছু না দিলে নিজের প্রোফাইল
+      else {
+        uid = event.senderID;
+      }
+
+      const name = await usersData.getName(uid);
+
+      const imageUrl = `https://graph.facebook.com/${uid}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
+
+      const callback = () => {
+        api.sendMessage(
+          {
+            body: `🌸✨ ${name} এর প্রোফাইল পিকচার 👇`,
+            attachment: fs.createReadStream(cachePath)
+          },
+          event.threadID,
+          () => fs.unlinkSync(cachePath),
+          event.messageID
+        );
+      };
+
+      request(encodeURI(imageUrl))
+        .pipe(fs.createWriteStream(cachePath))
+        .on("close", callback);
+
+    } catch (err) {
+      console.error(err);
+      api.sendMessage("⚠️ কিছু একটা সমস্যা হয়েছে, আবার চেষ্টা করো ভাই 😭", event.threadID, event.messageID);
     }
   }
 };
